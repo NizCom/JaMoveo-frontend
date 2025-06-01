@@ -1,0 +1,259 @@
+/* Base container for the live page */
+.live-container {
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0;
+}
+
+/* Header section */
+.live-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(15px);
+  padding: 20px 30px;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(62, 74, 97, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.live-song-info {
+  text-align: left;
+}
+
+.live-song-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  background: linear-gradient(45deg, #3e4a61, #c14242, #3e4a61);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+.live-song-artist {
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin: 8px 0 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.live-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Button Styles */
+.role-switcher-btn {
+  padding: 10px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  font-family: "Poppins", sans-serif;
+}
+
+.role-switcher-btn:hover {
+  border-color: #c14242;
+  background: rgba(193, 66, 66, 0.2);
+  transform: translateY(-2px);
+}
+
+.quit-btn {
+  background: linear-gradient(45deg, #c14242, #ff4757);
+  min-width: auto;
+  padding: 12px 25px;
+}
+
+.quit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(193, 66, 66, 0.4);
+}
+
+/* Main Content Area */
+.live-content {
+  margin-top: 120px;
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+  padding: 40px;
+  scroll-behavior: smooth;
+}
+
+.lyrics-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.lyric-line-container {
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.chord-text {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffd700;
+  margin-bottom: 8px;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  font-family: "Courier New", monospace;
+  letter-spacing: 2px;
+}
+
+.lyric-text {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.7;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  font-family: "Poppins", sans-serif;
+  min-height: 1.7em;
+  padding-left: 10px;
+}
+
+.scroll-spacer {
+  height: 60vh;
+}
+
+/* Auto-scroll button */
+.auto-scroll-btn {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background: rgba(26, 26, 46, 0.9);
+  color: white;
+  border: 2px solid rgba(62, 74, 97, 0.5);
+  border-radius: 50px;
+  padding: 18px 28px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(15px);
+  z-index: 99;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.auto-scroll-btn:hover {
+  transform: translateY(-5px);
+  border-color: #c14242;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+.auto-scroll-btn.scrolling {
+  background: linear-gradient(45deg, #3e4a61, #c14242);
+  border-color: #c14242;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.scroll-icon {
+  font-size: 1.2rem;
+}
+
+.scroll-text {
+  font-weight: 600;
+}
+
+/* Custom scrollbar */
+.live-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.live-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.live-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #3e4a61, #c14242);
+  border-radius: 10px;
+}
+
+.live-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #c14242, #3e4a61);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .live-header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 20px;
+    text-align: center;
+  }
+
+  .live-song-title {
+    font-size: 2rem;
+  }
+
+  .live-song-artist {
+    font-size: 1.2rem;
+  }
+
+  .live-controls {
+    justify-content: center;
+  }
+
+  .lyric-text {
+    font-size: 1.8rem;
+  }
+
+  .chord-text {
+    font-size: 1.3rem;
+  }
+
+  .live-content {
+    margin-top: 140px;
+    height: calc(100vh - 140px);
+    padding: 20px;
+  }
+
+  .auto-scroll-btn {
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    font-size: 0.9rem;
+  }
+
+  .role-switcher-btn {
+    font-size: 0.8rem;
+    padding: 8px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .live-song-title {
+    font-size: 1.6rem;
+  }
+
+  .live-song-artist {
+    font-size: 1rem;
+  }
+
+  .lyric-text {
+    font-size: 1.5rem;
+  }
+
+  .chord-text {
+    font-size: 1.1rem;
+  }
+}
