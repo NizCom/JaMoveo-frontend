@@ -4,7 +4,10 @@ import "../styles/JaMoveo.css";
 import { io } from "socket.io-client";
 import api from "../api";
 
-const socket = io(import.meta.env.VITE_BASE_SERVER_URL);
+const SERVER_URL = import.meta.env.VITE_BASE_SERVER_URL;
+const socket = io(SERVER_URL, {
+  transports: ["websocket", "polling"], // Good practice to explicitly list transports
+});
 
 const MainPagePlayer = () => {
   const navigate = useNavigate();

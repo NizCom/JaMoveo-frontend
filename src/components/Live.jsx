@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
-const socket = io(import.meta.env.VITE_BASE_SERVER_URL);
 import { useUser } from "../context/UserContext"; // <-- Import useUser
 import "../styles/LivePage.css";
 import "../styles/JaMoveo.css";
@@ -17,7 +16,10 @@ const LivePage = () => {
   const [userInstrument, setUserInstrument] = useState(user?.instrument); // Default to context role
   const scrollContainerRef = useRef(null);
   const scrollIntervalRef = useRef(null);
-
+  const SERVER_URL = import.meta.env.VITE_BASE_SERVER_URL;
+  const socket = io(SERVER_URL, {
+    transports: ["websocket", "polling"], // Good practice to explicitly list transports
+  });
   console.log("instrument:", userInstrument);
   console.log("role:", userRole);
 

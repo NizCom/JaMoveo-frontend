@@ -5,8 +5,10 @@ import { io } from "socket.io-client";
 
 import "../styles/SongsGrid.css";
 
-const socket = io(import.meta.env.VITE_BASE_SERVER_URL);
-
+const SERVER_URL = import.meta.env.VITE_BASE_SERVER_URL;
+const socket = io(SERVER_URL, {
+  transports: ["websocket", "polling"], // Good practice to explicitly list transports
+});
 const Results = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
